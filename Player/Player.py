@@ -13,10 +13,10 @@ def winner(player, croupier):
         print(f'\nResult: Win ${prize}!')
     elif 21 >= croupier_pts > player_pts:
         print(f'\nResult: Lose ${bet}!')
-    elif croupier_pts > 21:
+    elif croupier_pts > 21 >= player_pts:
         player.winBalance(prize)
         print(f'\nResult: Win ${prize}!')
-    elif player_pts > 21:
+    elif player_pts > 21 >= croupier_pts:
         print(f'\nResult: Lose ${bet}!')
     else:
         player.winBalance(bet)
