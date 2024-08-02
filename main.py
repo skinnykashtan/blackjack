@@ -1,4 +1,5 @@
-from Player.Player import *
+import Player
+import Deck
 
 
 def cls():
@@ -11,7 +12,7 @@ if __name__ == '__main__':
     print('Type 0 to close')
     option = int(input())
     games = 0
-    player = Player(2000, 0, deck=None)
+    player = Player.Player(2000, 0, deck=None)
 
     if option == 1:
         while True:
@@ -22,18 +23,18 @@ if __name__ == '__main__':
                 option = int(input())
 
                 if option == 1:
-                    deck = Deck()
+                    deck = Deck.Deck()
                     player.deck = deck.game_deck
-                    croupier = Player(0, 0, deck=deck.game_deck)
+                    croupier = Player.Player(0, 0, deck=deck.game_deck)
                 else:
                     cls()
                     print('Closing..')
                     exit()
 
             else:
-                deck = Deck()
+                deck = Deck.Deck()
                 player.deck = deck.game_deck
-                croupier = Player(0, 0, deck=deck.game_deck)
+                croupier = Player.Player(0, 0, deck=deck.game_deck)
 
             print('Enter bet amount:')
             bet = int(input())
@@ -50,13 +51,13 @@ if __name__ == '__main__':
                 player.showPlayerCards()
 
                 print('\nCroupier cards:')
-                if calculateValue(croupier.cards) > 21:
+                if Player.calculateValue(croupier.cards) > 21:
                     croupier.showPlayerCards()
-                    winner(player, croupier)
+                    Player.winner(player, croupier)
                     break
-                elif calculateValue(player.cards) > 21:
+                elif Player.calculateValue(player.cards) > 21:
                     croupier.showPlayerCards()
-                    winner(player, croupier)
+                    Player.winner(player, croupier)
                     break
                 else:
                     croupier.showCroupierCards()
@@ -68,7 +69,7 @@ if __name__ == '__main__':
 
                 if choice == 'd':
                     player.drawCard()
-                    if calculateValue(croupier.cards) < 17:
+                    if Player.calculateValue(croupier.cards) < 17:
                         croupier.drawCard()
                     else:
                         pass
@@ -80,7 +81,7 @@ if __name__ == '__main__':
                     print('\nCroupier cards:')
                     croupier.showPlayerCards()
 
-                    winner(player, croupier)
+                    Player.winner(player, croupier)
 
                     games += 1
                     break

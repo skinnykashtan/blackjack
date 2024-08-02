@@ -1,4 +1,4 @@
-from Deck.Deck import *
+import random
 from main import cls
 
 
